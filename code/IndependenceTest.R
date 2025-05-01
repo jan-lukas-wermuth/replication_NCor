@@ -8,10 +8,6 @@
 
 rm(list = ls())
 
-source(file = "/Users/lukaswermuth/Documents/Dr.Wermuth/Rpackages/NCor/R/NCor.R")
-invisible(lapply(list.files("/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/code/functions", pattern = "\\.R$", full.names = TRUE), source))
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/IndependenceTest"
-
 library(arrangements)
 library(rstatix)
 library(foreach)
@@ -22,6 +18,12 @@ library(doParallel)
 library(DescTools)
 library(compositions)
 library(mvtnorm)
+library(devtools)
+
+# install_github("jan-lukas-wermuth/NCor")
+library(NCor)
+invisible(lapply(list.files("/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/code/functions", pattern = "\\.R$", full.names = TRUE), source))
+results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/IndependenceTest"
 
 # Parameter Specifications ------------------------------------------------
 MC <- 1000

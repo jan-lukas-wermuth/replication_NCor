@@ -8,8 +8,10 @@
 # ============================================================
 rm(list = ls())
 
-source(file = "/Users/lukaswermuth/Documents/Dr.Wermuth/Rpackages/NCor/R/NCor.R")
+library(devtools)
 
+# install_github("jan-lukas-wermuth/NCor")
+library(NCor)
 library(dplyr)
 library(readxl)
 library(arrangements)
@@ -17,9 +19,10 @@ library(NCor)
 library(RCor)
 library(doParallel)
 
+data_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/data"
 
 # Case Study: Countries vs Religions --------------------------------------
-df <- read_xlsx(path = "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/Data/Religionsbycountryin2020.xlsx", skip = 1)
+df <- read_xlsx(path = paste(data_folder, "Religionsbycountryin2020.xlsx", sep = "/"), skip = 1)
 
 df <- df %>% dplyr::filter(Religion == "Christians" | Religion == "Muslims" | Religion == "Jews")
 colnames(df) <- c("Geography type", "Geography", "Religion", "Count", "Selected religion %")

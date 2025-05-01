@@ -7,10 +7,7 @@
 # ============================================================
 rm(list = ls())
 
-source(file = "/Users/lukaswermuth/Documents/Dr.Wermuth/Rpackages/NCor/R/NCor.R")
-invisible(lapply(list.files("/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/True_gammas", pattern = "\\.RData$", full.names = TRUE), function(x) load(x, envir = globalenv())))
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/Coverage"
-
+library(devtools)
 library(arrangements)
 library(rstatix)
 library(foreach)
@@ -19,6 +16,11 @@ library(doParallel)
 library(DescTools)
 library(compositions)
 library(mvtnorm)
+
+# install_github("jan-lukas-wermuth/NCor")
+library(NCor)
+invisible(lapply(list.files("/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/True_gammas", pattern = "\\.RData$", full.names = TRUE), function(x) load(x, envir = globalenv())))
+results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/Coverage"
 
 # Parameter Specifications ------------------------------------------------
 MC <- 1000
