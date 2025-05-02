@@ -19,6 +19,7 @@ In order to run the replication code, please install the `R` package
 ``` r
 install.packages("devtools")
 library(devtools)
+install_github("jan-lukas-wermuth/RCor")
 install_github("jan-lukas-wermuth/NCor")
 ```
 
@@ -47,8 +48,8 @@ results in the paper. I give a short overview over the several scripts
 in the folder.
 
 - True_gammas.R: This file simulates the values for $\gamma^*$ for each
-  DGP that is described in the paper and a grid of dependence
-  parameters.
+  DGP that is described in the paper and a grid of dependence parameters
+  $\alpha$.
 
 - CIs_Coverage.R: This script simulates empirical coverage rates of the
   confidence intervals for $\gamma^*$ for the same DGPs as above.
@@ -63,8 +64,34 @@ in the folder.
 - Pval_plots.R: Here, the plots corresponding to the results obtained
   from IndependenceTest.R are created.
 
-- IncomeCountryExample.R: This script
+- IncomeCountryExample.R: This script is meant to be run in LISSY, a
+  remote-execution system provided by the Luxembourg Income Study (LIS)
+  Database (see the remark in the section on data availability). It
+  produces the estimates for $\gamma^*$ as well as its confidence
+  intervals for the empirical example concerning the dependence between
+  the variables country and income.
+
+- ReligionCountryExample.R: This file computes several correlation
+  coefficients for a number of border triangles. It uses data from the
+  [World Religion Database](https://www.worldreligiondatabase.org) (see
+  the remark in the section on data availability).
+
+- WorldMap.R: Here, the plots corresponding to the results obtained from
+  IncomeCountryExample.R and ReligionCountryExample.R are produced.
 
 ## data
 
+After downloading the dataset from the [World Religion
+Database](https://www.worldreligiondatabase.org), please store it in
+this folder (see the remark in the section on data availability).
+
 ## results
+
+### Plots
+
+This folder contains all plots.
+
+### Simulations
+
+This folder contains all the raw simulation results in three subfolders:
+Coverage, IndependenceTest and True_gammas.

@@ -15,9 +15,9 @@ library(NCor)
 library(dplyr)
 library(readxl)
 library(arrangements)
-library(NCor)
 library(RCor)
 library(doParallel)
+library(DescTools)
 
 data_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/data"
 
