@@ -22,8 +22,9 @@ library(devtools)
 
 # install_github("jan-lukas-wermuth/NCor")
 library(NCor)
-invisible(lapply(list.files("/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/code/functions", pattern = "\\.R$", full.names = TRUE), source))
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/IndependenceTest"
+setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
+invisible(lapply(list.files("code/functions", pattern = "\\.R$", full.names = TRUE), source))
+results_folder <- "results/Simulations/IndependenceTest"
 
 # Parameter Specifications ------------------------------------------------
 MC <- 1000

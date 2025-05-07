@@ -22,9 +22,10 @@ library(devtools)
 
 # install_github("jan-lukas-wermuth/NCor")
 library(NCor)
-invisible(lapply(list.files("/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/code/functions", pattern = "\\.R$", full.names = TRUE), source))
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/True_gammas"
+setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
 
+invisible(lapply(list.files("code/functions", pattern = "\\.R$", full.names = TRUE), source))
+results_folder <- "results/Simulations/True_gammas"
 
 # Parameter Specification ------------------------------------------------
 MC <- 10 # Monte Carlo replications

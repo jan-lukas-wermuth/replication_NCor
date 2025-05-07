@@ -19,8 +19,9 @@ library(mvtnorm)
 
 # install_github("jan-lukas-wermuth/NCor")
 library(NCor)
-invisible(lapply(list.files("/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/True_gammas", pattern = "\\.RData$", full.names = TRUE), function(x) load(x, envir = globalenv())))
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/Coverage"
+setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
+invisible(lapply(list.files("results/Simulations/True_gammas", pattern = "\\.RData$", full.names = TRUE), function(x) load(x, envir = globalenv())))
+results_folder <- "results/Simulations/Coverage"
 
 # Parameter Specifications ------------------------------------------------
 MC <- 1000

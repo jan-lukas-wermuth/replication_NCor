@@ -15,9 +15,11 @@ library(dplyr)
 library(ks)
 library(purrr)
 
+setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
+
 # Parameter Specification -------------------------------------------------
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Plots"
-sizepower_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/IndependenceTest"
+results_folder <- "results/Plots"
+sizepower_folder <- "results/Simulations/IndependenceTest"
 
 # Load Size/Power Values for Gamma*-Test --------------------------------------------------
 load(file = paste(sizepower_folder, "RegNormal_pval.RData", sep = "/"))

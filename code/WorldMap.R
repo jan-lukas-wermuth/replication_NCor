@@ -15,9 +15,10 @@ library(patchwork)
 library(sf)
 library(latex2exp)
 
+setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
 
 size <- 7.5
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Plots"
+results_folder <- "results/Plots"
 
 # Get world map data and position points on border triangles (countries vs religions) --------------
 world <- ne_countries(scale = 10, returnclass = "sf")

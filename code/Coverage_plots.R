@@ -16,12 +16,13 @@ library(ks)
 library(purrr)
 library(latex2exp)
 
+setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
 
 # Parameter Specification -------------------------------------------------
 DGPs <- c("Regression Normal", "Regression Cauchy", "Multinomial Logit Normal", "Multinomial Logit Cauchy", "3 x 3 Skewed Uniform", "3 x 3 Uniform Uniform")
 SampleSizes <- c("50", "200", "800")
-results_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Plots"
-coverage_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/results/Simulations/Coverage"
+results_folder <- "results/Plots"
+coverage_folder <- "results/Simulations/Coverage"
 
 # Load Coverages ----------------------------------------------------------
 load(file = paste(coverage_folder, "RegNormal_CIs.RData", sep = "/"))

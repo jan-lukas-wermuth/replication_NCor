@@ -95,3 +95,23 @@ This folder contains all plots.
 
 This folder contains all the raw simulation results in three subfolders:
 Coverage, IndependenceTest and True_gammas.
+
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-LIS2025" class="csl-entry">
+
+Luxembourg Income Study (LIS) Database. 2025. Luxembourg:
+<http://www.lisdatacenter.org>; LIS.
+
+</div>
+
+<div id="ref-WRD2025" class="csl-entry">
+
+Zurlo, Gina A. 2025. “World Religion Database.”
+<https://www.worldreligiondatabase.org>.
+
+</div>
+
+</div>

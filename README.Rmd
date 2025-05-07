@@ -1,6 +1,7 @@
 ---
 output: github_document
-bibliography: references.bib 
+bibliography: references.bib
+nocite: "@*"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

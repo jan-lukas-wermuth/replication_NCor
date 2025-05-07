@@ -19,7 +19,9 @@ library(RCor)
 library(doParallel)
 library(DescTools)
 
-data_folder <- "/Users/lukaswermuth/Library/CloudStorage/Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor/data"
+setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
+
+data_folder <- "data"
 
 # Case Study: Countries vs Religions --------------------------------------
 df <- read_xlsx(path = paste(data_folder, "Religionsbycountryin2020.xlsx", sep = "/"), skip = 1)
