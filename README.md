@@ -79,6 +79,9 @@ in the folder.
 - WorldMap.R: Here, the plots corresponding to the results obtained from
   IncomeCountryExample.R and ReligionCountryExample.R are produced.
 
+The files in the subfolder **functions** are called automatically by the
+previous scripts and do not have to be run explicitly.
+
 ## data
 
 After downloading the dataset from the [World Religion
