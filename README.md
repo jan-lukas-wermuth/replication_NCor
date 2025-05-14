@@ -97,7 +97,7 @@ This folder contains all plots.
 ### Simulations
 
 This folder contains all the raw simulation results in three subfolders:
-Coverage, IndependenceTest and True_gammas.
+**Coverage**, **IndependenceTest** and **True_gammas**.
 
 ## References
 

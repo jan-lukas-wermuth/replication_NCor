@@ -69,7 +69,7 @@ After downloading the dataset from the [World Religion Database](https://www.wor
 This folder contains all plots.
 
 ### Simulations
-This folder contains all the raw simulation results in three subfolders: Coverage, IndependenceTest and True_gammas.
+This folder contains all the raw simulation results in three subfolders: **Coverage**, **IndependenceTest** and **True_gammas**.
 
 ## References
 
