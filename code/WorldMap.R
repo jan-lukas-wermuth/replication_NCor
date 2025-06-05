@@ -14,11 +14,9 @@ library(ggplot2)
 library(patchwork)
 library(sf)
 library(latex2exp)
-
-setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
+library(here)
 
 size <- 7.5
-results_folder <- "results/Plots"
 
 # Get world map data and position points on border triangles (countries vs religions) --------------
 world <- ne_countries(scale = 10, returnclass = "sf")
@@ -154,7 +152,7 @@ CramerV_World <- ggplot(data = world) +
     axis.title.y = element_blank(),  # Remove y-axis label
     axis.text = element_blank()
   ) 
-ggsave(plot = CramerV_World, filename = paste(results_folder, "/CramerV_World.pdf", sep = "/"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
+ggsave(plot = CramerV_World, filename = here("results/Plots/CramerV_World.pdf"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
 
 contcoef_World <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -165,7 +163,7 @@ contcoef_World <- ggplot(data = world) +
     axis.title.y = element_blank(),  # Remove y-axis label
     axis.text = element_blank()
   ) 
-ggsave(plot = contcoef_World, filename = paste(results_folder, "contcoef_World.pdf", sep = "/"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
+ggsave(plot = contcoef_World, filename = here("results/Plots/contcoef_World.pdf"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
 
 GKtau_World <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -176,7 +174,7 @@ GKtau_World <- ggplot(data = world) +
     axis.title.y = element_blank(),  # Remove y-axis label
     axis.text = element_blank()
   ) 
-ggsave(plot = GKtau_World, filename = paste(results_folder, "GKtau_World.pdf", sep = "/"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
+ggsave(plot = GKtau_World, filename = here("results/Plots/GKtau_World.pdf"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
 
 GKlambda_World <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -187,7 +185,7 @@ GKlambda_World <- ggplot(data = world) +
     axis.title.y = element_blank(),  # Remove y-axis label
     axis.text = element_blank()
   ) 
-ggsave(plot = GKlambda_World, filename = paste(results_folder, "GKlambda_World.pdf", sep = "/"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
+ggsave(plot = GKlambda_World, filename = here("results/Plots/GKlambda_World.pdf"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
 
 UncertCoef_World <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -198,7 +196,7 @@ UncertCoef_World <- ggplot(data = world) +
     axis.title.y = element_blank(),  # Remove y-axis label
     axis.text = element_blank()
   ) 
-ggsave(plot = UncertCoef_World, filename = paste(results_folder, "UncertCoef_World.pdf", sep = "/"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
+ggsave(plot = UncertCoef_World, filename = here("results/Plots/UncertCoef_World.pdf"), height = 200, width = (1+sqrt(5))/2*200, device = "pdf", units = "mm")
 
 CramerV_Europe <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -210,7 +208,7 @@ CramerV_Europe <- ggplot(data = world) +
     axis.text = element_blank()
   ) +
   coord_sf(xlim = c(5, 32.3), ylim = c(40.5, 57.8), expand = FALSE)
-ggsave(plot = CramerV_Europe, filename = paste(results_folder, "CramerV_Europe.pdf", sep = "/"), height = 200, width = 221, device = "pdf", units = "mm")
+ggsave(plot = CramerV_Europe, filename = here("results/Plots/CramerV_Europe.pdf"), height = 200, width = 221, device = "pdf", units = "mm")
 
 contcoef_Europe <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -222,7 +220,7 @@ contcoef_Europe <- ggplot(data = world) +
     axis.text = element_blank()
   ) +
   coord_sf(xlim = c(5, 32.3), ylim = c(40.5, 57.8), expand = FALSE)
-ggsave(plot = contcoef_Europe, filename = paste(results_folder, "contcoef_Europe.pdf", sep = "/"), height = 200, width = 221, device = "pdf", units = "mm")
+ggsave(plot = contcoef_Europe, filename = here("results/Plots/contcoef_Europe.pdf"), height = 200, width = 221, device = "pdf", units = "mm")
 
 GKtau_Europe <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -234,7 +232,7 @@ GKtau_Europe <- ggplot(data = world) +
     axis.text = element_blank()
   ) +
   coord_sf(xlim = c(5, 32.3), ylim = c(40.5, 57.8), expand = FALSE)
-ggsave(plot = GKtau_Europe, filename = paste(results_folder, "GKtau_Europe.pdf", sep = "/"), height = 200, width = 221, device = "pdf", units = "mm")
+ggsave(plot = GKtau_Europe, filename = here("results/Plots/GKtau_Europe.pdf"), height = 200, width = 221, device = "pdf", units = "mm")
 
 GKlambda_Europe <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -246,7 +244,7 @@ GKlambda_Europe <- ggplot(data = world) +
     axis.text = element_blank()
   ) +
   coord_sf(xlim = c(5, 32.3), ylim = c(40.5, 57.8), expand = FALSE)
-ggsave(plot = GKtau_Europe, filename = paste(results_folder, "GKlambda_Europe.pdf", sep = "/"), height = 200, width = 221, device = "pdf", units = "mm")
+ggsave(plot = GKtau_Europe, filename = here("results/Plots/GKlambda_Europe.pdf"), height = 200, width = 221, device = "pdf", units = "mm")
 
 UncertCoef_Europe <- ggplot(data = world) +
   geom_sf(fill = "white", color = "black", linewidth = 0.05) +
@@ -258,7 +256,7 @@ UncertCoef_Europe <- ggplot(data = world) +
     axis.text = element_blank()
   ) +
   coord_sf(xlim = c(5, 32.3), ylim = c(40.5, 57.8), expand = FALSE)
-ggsave(plot = UncertCoef_Europe, filename = paste(results_folder, "UncertCoef_Europe.pdf", sep = "/"), height = 200, width = 221, device = "pdf", units = "mm")
+ggsave(plot = UncertCoef_Europe, filename = here("results/Plots/UncertCoef_Europe.pdf"), height = 200, width = 221, device = "pdf", units = "mm")
 
 points_data_Europe <- data.frame(
   lon = c(31.7, 26.6, 27.7, 28.2, 23.6, 23.7, 15, 18.7, 22.6, 
@@ -291,18 +289,21 @@ wermuthcoef_Europe <- ggplot(data = world) +
     axis.text = element_blank()
   ) + 
   coord_sf(xlim = c(5, 32.3), ylim = c(40.5, 57.8), expand = FALSE)
-ggsave(plot = wermuthcoef_Europe, filename = paste(results_folder, "wermuthcoef_Europe.pdf", sep = "/"), height = 200, width = 221, device = "pdf", units = "mm")
+ggsave(plot = wermuthcoef_Europe, filename = here("results/Plots/wermuthcoef_Europe.pdf"), height = 200, width = 221, device = "pdf", units = "mm")
 
 CramerV_Wermuth_Europe <- (CramerV_Europe + theme(plot.margin = unit(c(0,0,10,0), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 15))) / wermuthcoef_Europe + plot_layout(guides = 'collect') + theme(legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 15))
-ggsave(plot = CramerV_Wermuth_Europe, filename = paste(results_folder, "CramerV_Wermuth_Europe.pdf", sep = "/"), height = 410, width = 240, device = "pdf", units = "mm")
-CramerV_Wermuth_Europe <- (CramerV_Europe + theme(plot.margin = unit(c(0,10,0,0), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20))) + wermuthcoef_Europe + plot_layout(guides = 'collect') + theme(legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20))
-ggsave(plot = CramerV_Wermuth_Europe, filename = paste(results_folder, "CramerV_Wermuth_Europe_wide.pdf", sep = "/"), height = 220, width = 430, device = "pdf", units = "mm")
+ggsave(plot = CramerV_Wermuth_Europe, filename = here("results/Plots/CramerV_Wermuth_Europe.pdf"), height = 410, width = 240, device = "pdf", units = "mm")
+separator <- ggplot() + 
+  theme_void() +
+  theme(panel.background = element_rect(fill = "black"))
+CramerV_Wermuth_Europe <- (CramerV_Europe + theme(plot.margin = unit(c(0,10,0,0), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20))) + separator + (wermuthcoef_Europe + theme(plot.margin = unit(c(0,0,0,10), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20)))  + plot_layout(guides = 'collect', widths = c(1, 0.01, 1))
+ggsave(plot = CramerV_Wermuth_Europe, filename = here("results/Plots/CramerV_Wermuth_Europe_wide.pdf"), height = 220, width = 430, device = "pdf", units = "mm")
 
 ContCoef_GKtau_GKlambda_UncertCoef_Europe <- ((contcoef_Europe + theme(plot.margin = unit(c(0,10,10,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15))) |
   (GKtau_Europe + theme(plot.margin = unit(c(0,0,0,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15)))) /
   ((GKlambda_Europe + theme(plot.margin = unit(c(0,10,0,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15))) | (UncertCoef_Europe + theme(plot.margin = unit(c(0,0,0,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15)))) +
   plot_layout(guides = 'collect')
-ggsave(plot = ContCoef_GKtau_GKlambda_UncertCoef_Europe, filename = paste(results_folder, "ContCoef_GKtau_GKlambda_UncertCoef_Europe.pdf", sep = "/"), height = 410, width = 450, device = "pdf", units = "mm")
+ggsave(plot = ContCoef_GKtau_GKlambda_UncertCoef_Europe, filename = here("results/Plots/ContCoef_GKtau_GKlambda_UncertCoef_Europe.pdf"), height = 410, width = 450, device = "pdf", units = "mm")
 
 # Position points on border triangles (countries vs income): LIS database ---------------
 points_data_Europe <- data.frame(
@@ -336,13 +337,13 @@ wermuthcoef_Europe <- ggplot(data = world) +
     legend.text = element_text(size = 14)
   ) + 
   coord_sf(xlim = c(5, 32.3), ylim = c(40.5, 57.8), expand = FALSE)
-ggsave(plot = wermuthcoef_Europe, filename = paste(results_folder, "wermuthcoef_Europe_income.pdf", sep = "/"), height = 200, width = 221, device = "pdf", units = "mm")
+ggsave(plot = wermuthcoef_Europe, filename = here("results/Plots/wermuthcoef_Europe_income.pdf"), height = 200, width = 221, device = "pdf", units = "mm")
 
 wermuthcoef_CIs <- ggplot(points_data_Europe, aes(label, wermuthcoef)) +
   geom_errorbar(aes(ymin = CIs_lower, ymax = CIs_upper), linewidth = 0.8, width = 0.33) +
   geom_point(size = 2) + theme_bw(base_size = 20) + ylim(c(0,0.401)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + labs(y = TeX("$\\widehat{\\gamma}^*$"), x = "")
-ggsave(plot = wermuthcoef_CIs, filename = paste(results_folder, "wermuthcoef_Europe_income_CIs.pdf", sep = "/"), height = 20, width = 20, device = "pdf", units = "cm")
+ggsave(plot = wermuthcoef_CIs, filename = here("results/Plots/wermuthcoef_Europe_income_CIs.pdf"), height = 20, width = 20, device = "pdf", units = "cm")
 
 
 
