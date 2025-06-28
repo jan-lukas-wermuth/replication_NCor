@@ -299,10 +299,41 @@ separator <- ggplot() +
 CramerV_Wermuth_Europe <- (CramerV_Europe + theme(plot.margin = unit(c(0,10,0,0), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20))) + separator + (wermuthcoef_Europe + theme(plot.margin = unit(c(0,0,0,10), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20)))  + plot_layout(guides = 'collect', widths = c(1, 0.01, 1))
 ggsave(plot = CramerV_Wermuth_Europe, filename = here("results/Plots/CramerV_Wermuth_Europe_wide.pdf"), height = 220, width = 430, device = "pdf", units = "mm")
 
-ContCoef_GKtau_GKlambda_UncertCoef_Europe <- ((contcoef_Europe + theme(plot.margin = unit(c(0,10,10,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15))) |
-  (GKtau_Europe + theme(plot.margin = unit(c(0,0,0,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15)))) /
-  ((GKlambda_Europe + theme(plot.margin = unit(c(0,10,0,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15))) | (UncertCoef_Europe + theme(plot.margin = unit(c(0,0,0,0), "mm"), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 15)))) +
-  plot_layout(guides = 'collect')
+black_line <- ggplot() +
+  theme_void() +
+  theme(panel.background = element_rect(fill = "black"))
+
+# Define layout areas (3x3 grid)
+P1 <- area(t = 1, l = 1, b = 1, r = 1)
+V1 <- area(t = 1, l = 2, b = 1, r = 2)
+P2 <- area(t = 1, l = 3, b = 1, r = 3)
+
+H1 <- area(t = 2, l = 1, b = 2, r = 1)
+X  <- area(t = 2, l = 2, b = 2, r = 2)
+H2 <- area(t = 2, l = 3, b = 2, r = 3)
+
+P3 <- area(t = 3, l = 1, b = 3, r = 1)
+V2 <- area(t = 3, l = 2, b = 3, r = 2)
+P4 <- area(t = 3, l = 3, b = 3, r = 3)
+
+# Compose full plot using named areas
+ContCoef_GKtau_GKlambda_UncertCoef_Europe <- wrap_plots(
+  `P1` = contcoef_Europe + theme(legend.position = "right", plot.margin = unit(c(0,10,10,0), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20)),
+  `V1` = black_line,
+  `P2` = GKtau_Europe + theme(legend.position = "right", plot.margin = unit(c(0,0,10,10), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20)),
+  `H1` = black_line,
+  `X`  = plot_spacer(),  # center of the cross
+  `H2` = black_line,
+  `P3` = GKlambda_Europe + theme(legend.position = "right", plot.margin = unit(c(10,0,0,0), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20)),
+  `V2` = black_line,
+  `P4` = UncertCoef_Europe + theme(legend.position = "right", plot.margin = unit(c(10,0,0,0), "mm"), legend.key.size = unit(1.2, "cm"), legend.text = element_text(size = 20)),
+  design = c(P1, V1, P2, H1, X, H2, P3, V2, P4)
+) + 
+  plot_layout(
+    guides = "collect",
+    widths = c(1, 0.01, 1),
+    heights = c(1, 0.01, 1)
+  )
 ggsave(plot = ContCoef_GKtau_GKlambda_UncertCoef_Europe, filename = here("results/Plots/ContCoef_GKtau_GKlambda_UncertCoef_Europe.pdf"), height = 410, width = 450, device = "pdf", units = "mm")
 
 # Position points on border triangles (countries vs income): LIS database ---------------
@@ -344,9 +375,6 @@ wermuthcoef_CIs <- ggplot(points_data_Europe, aes(label, wermuthcoef)) +
   geom_point(size = 2) + theme_bw(base_size = 20) + ylim(c(0,0.401)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + labs(y = TeX("$\\widehat{\\gamma}^*$"), x = "")
 ggsave(plot = wermuthcoef_CIs, filename = here("results/Plots/wermuthcoef_Europe_income_CIs.pdf"), height = 20, width = 20, device = "pdf", units = "cm")
-
-
-
 
 
 

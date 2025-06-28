@@ -16,12 +16,13 @@ library(doParallel)
 library(DescTools)
 library(compositions)
 library(mvtnorm)
+library(here)
 
 # install_github("jan-lukas-wermuth/NCor")
 library(NCor)
-setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
-invisible(lapply(list.files("results/Simulations/True_gammas", pattern = "\\.RData$", full.names = TRUE), function(x) load(x, envir = globalenv())))
-results_folder <- "results/Simulations/Coverage"
+
+invisible(lapply(list.files(here("results/Simulations/True_gammas"), pattern = "\\.RData$", full.names = TRUE), function(x) load(x, envir = globalenv())))
+invisible(lapply(list.files(here("code/functions"), pattern = "\\.R$", full.names = TRUE), source))
 
 # Parameter Specifications ------------------------------------------------
 MC <- 1000
@@ -37,13 +38,13 @@ for (rho in rhos){
     for (i in 1:MC){
       print(c(rho, n, i))
       XY <- Gen_RegressionDGP(n, rho, i, Inf) # Generates data according to specified DGP
-      res <- NCor(XY[,1], XY[,2], nominal = "r", CIs = TRUE, Test = FALSE)[[1]]
+      res <- NCor(XY[,1], XY[,2], nominal = "r", CIs = TRUE, unbiased = FALSE)[[1]]
       decision_wermuth_array[as.character(n),as.character(i),as.character(rho)] <- as.numeric(data.table::between(gammas_RegNorm[as.character(rho)], res[2], res[3]))
     }
   }
 }
 
-save(decision_wermuth_array, file = paste(results_folder, "RegNormal_CIs.RData", sep = "/"))
+save(decision_wermuth_array, file = here("results/Simulations/Coverage/RegNormal_CIs.RData"))
 
 # Regression Cauchy -------------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^3 * 40
@@ -54,13 +55,13 @@ for (rho in rhos){
     for (i in 1:MC){
       print(c(rho, n, i))
       XY <- Gen_RegressionDGP(n, rho, i, 1) # Generates data according to specified DGP
-      res <- NCor(XY[,1], XY[,2], nominal = "r", CIs = TRUE, Test = FALSE)[[1]]
+      res <- NCor(XY[,1], XY[,2], nominal = "r", CIs = TRUE, unbiased = FALSE)[[1]]
       decision_wermuth_array[as.character(n),as.character(i),as.character(rho)] <- as.numeric(data.table::between(gammas_RegCauchy[as.character(rho)], res[2], res[3]))
     }
   }
 } 
 
-save(decision_wermuth_array, file = paste(results_folder, "RegCauchy_CIs.RData", sep = "/"))
+save(decision_wermuth_array, file = phere("results/Simulations/Coverage/RegCauchy_CIs.RData"))
 
 
 # Multinomial Logit Normal ------------------------------------------------------
@@ -72,13 +73,13 @@ for (rho in rhos){
     for (i in 1:MC){
       print(c(rho, n, i))
       XY <- Gen_MultinomialDGP(n, rho, i, Inf) # Generates data according to specified DGP
-      res <- NCor(XY[,2], XY[,1], nominal = "r", CIs = TRUE, Test = FALSE)[[1]]
+      res <- NCor(XY[,2], XY[,1], nominal = "r", CIs = TRUE, unbiased = FALSE)[[1]]
       decision_wermuth_array[as.character(n),as.character(i),as.character(rho)] <- as.numeric(data.table::between(gammas_MultNorm[as.character(rho)], res[2], res[3]))
     }
   }
 } 
 
-save(decision_wermuth_array, file = paste(results_folder, "MultNormal_CIs.RData", sep = "/"))
+save(decision_wermuth_array, file = here("results/Simulations/Coverage/MultNormal_CIs.RData"))
 
 # Multinomial Logit Cauchy ------------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^2 * 9
@@ -89,13 +90,13 @@ for (rho in rhos){
     for (i in 1:MC){
       print(c(rho, n, i))
       XY <- Gen_MultinomialDGP(n, rho, i, 1) # Generates data according to specified DGP
-      res <- NCor(XY[,2], XY[,1], nominal = "r", CIs = TRUE, Test = FALSE)[[1]]
+      res <- NCor(XY[,2], XY[,1], nominal = "r", CIs = TRUE, unbiased = FALSE)[[1]]
       decision_wermuth_array[as.character(n),as.character(i),as.character(rho)] <- as.numeric(data.table::between(gammas_MultCauchy[as.character(rho)], res[2], res[3]))
     }
   }
 }
 
-save(decision_wermuth_array, file = paste(results_folder, "MultCauchy_CIs.RData", sep = "/"))
+save(decision_wermuth_array, file = here("results/Simulations/Coverage/MultCauchy_CIs.RData"))
 
 
 # 3 x 3 Skewed Uniform ------------------------------------------------------
@@ -109,13 +110,13 @@ for (rho in rhos){
     for (i in 1:MC){
       print(c(rho, n, i))
       contingency_matrix <- Gen_3x3DGP(n, i) # Generates data according to specified DGP
-      res <- NCor(contingency_matrix, nominal = "rc", CIs = TRUE, Test = FALSE)[[1]]
+      res <- NCor(contingency_matrix, nominal = "rc", CIs = TRUE, unbiased = FALSE)[[1]]
       decision_wermuth_array[as.character(n),as.character(i),as.character(rho)] <- as.numeric(data.table::between(gammas_3x3SU[as.character(rho)], res[2], res[3]))
     }
   }
 } 
 
-save(decision_wermuth_array, file = paste(results_folder, "3x3SU_CIs.RData", sep = "/"))
+save(decision_wermuth_array, file = here("results/Simulations/Coverage/3x3SU_CIs.RData"))
 
 # 3 x 3 Uniform Uniform ------------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^2 / 36
@@ -128,11 +129,11 @@ for (rho in rhos){
     for (i in 1:MC){
       print(c(rho, n, i))
       contingency_matrix <- Gen_3x3DGP(n, i) # Generates data according to specified DGP
-      res <- NCor(contingency_matrix, nominal = "rc", CIs = TRUE, Test = FALSE)[[1]]
+      res <- NCor(contingency_matrix, nominal = "rc", CIs = TRUE, unbiased = FALSE)[[1]]
       decision_wermuth_array[as.character(n),as.character(i),as.character(rho)] <- as.numeric(data.table::between(gammas_3x3UU[as.character(rho)], res[2], res[3]))
     }
   }
 } 
 
-save(decision_wermuth_array, file = paste(results_folder, "3x3UU_CIs.RData", sep = "/"))
+save(decision_wermuth_array, file = here("results/Simulations/Coverage/3x3UU_CIs.RData"))
 

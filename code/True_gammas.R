@@ -19,13 +19,12 @@ library(DescTools)
 library(compositions)
 library(mvtnorm)
 library(devtools)
+library(here)
 
 # install_github("jan-lukas-wermuth/NCor")
 library(NCor)
-setwd("~Dropbox/Pohle Wermuth/NominalCorrelation/replication_NCor")
 
-invisible(lapply(list.files("code/functions", pattern = "\\.R$", full.names = TRUE), source))
-results_folder <- "results/Simulations/True_gammas"
+invisible(lapply(list.files(here("code/functions"), pattern = "\\.R$", full.names = TRUE), source))
 
 # Parameter Specification ------------------------------------------------
 MC <- 10 # Monte Carlo replications
@@ -47,7 +46,7 @@ for (rho in rhos) {
 }
 
 gammas_RegNorm <- colMeans(gamma_array)
-save(gammas_RegNorm, file = paste(results_folder, "gammas_RegNorm.RData", sep = "/"))
+save(gammas_RegNorm, file = here("gammas_RegNorm.RData"))
 
 # Regression Cauchy -------------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^3 * 40
@@ -64,7 +63,7 @@ for (rho in rhos) {
 }
 
 gammas_RegCauchy <- colMeans(gamma_array)
-save(gammas_RegCauchy, file = paste(results_folder, "gammas_RegCauchy.RData", sep = "/"))
+save(gammas_RegCauchy, file = here("gammas_RegCauchy.RData"))
 
 # Multinomial Logit Normal ------------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^2 * 9
@@ -81,7 +80,7 @@ for (rho in rhos) {
 }
 
 gammas_MultNorm <- colMeans(gamma_array)
-save(gammas_MultNorm, file = paste(results_folder, "gammas_MultNorm.RData", sep = "/"))
+save(gammas_MultNorm, file = here("gammas_MultNorm.RData"))
 
 # Multinomial Logit Cauchy ------------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^2 * 9
@@ -98,7 +97,7 @@ for (rho in rhos) {
 }
 
 gammas_MultCauchy <- colMeans(gamma_array)
-save(gammas_MultCauchy, file = paste(results_folder, "gammas_MultCauchy.RData", sep = "/"))
+save(gammas_MultCauchy, file = here("gammas_MultCauchy.RData"))
 
 # 3 x 3 Skewed Uniform ----------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^2 * 0.04
@@ -117,7 +116,7 @@ for (rho in rhos) {
 }
 
 gammas_3x3SU <- colMeans(gamma_array)
-save(gammas_3x3SU, file = paste(results_folder, "gammas_3x3SU.RData", sep = "/"))
+save(gammas_3x3SU, file = here("gammas_3x3SU.RData"))
 
 # 3 x 3 Uniform Uniform ---------------------------------------------------
 rhos <- (seq(0, 1, length.out = 100))^2 / 36
@@ -136,5 +135,5 @@ for (rho in rhos) {
 }
 
 gammas_3x3UU <- colMeans(gamma_array)
-save(gammas_3x3UU, file = paste(results_folder, "gammas_3x3UU.RData", sep = "/"))
+save(gammas_3x3UU, file = here("gammas_3x3UU.RData"))
 
