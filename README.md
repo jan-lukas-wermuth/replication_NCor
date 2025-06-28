@@ -54,12 +54,18 @@ in the folder.
 - CIs_Coverage.R: This script simulates empirical coverage rates of the
   confidence intervals for $\gamma^*$ for the same DGPs as above.
 
+- Bias.R: This script simulates the mean bias of $\widehat{\gamma}^*$
+  for the same DGPs as above.
+
 - IndependenceTest.R: This file simulates size and power values for the
   independence test based on $\gamma^*$ and a traditional competitor
   described in the paper. It uses the same DGPs as above.
 
 - Coverage_plots.R: Here, the plots corresponding to the results
   obtained from CIs_Coverage.R are produced.
+
+- Bias_plots.R: Here, the plots corresponding to the results obtained
+  from Bias.R are produced.
 
 - Pval_plots.R: Here, the plots corresponding to the results obtained
   from IndependenceTest.R are created.
